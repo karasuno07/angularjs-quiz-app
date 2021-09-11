@@ -1,0 +1,95 @@
+<body ng-controller="homeCtrl">
+    <!-- Main Content -->
+    <!-- hero area -->
+    <div class="hero-area hero-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Never Stop Learning</p>
+                            <h1>FPT Course Learning System</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end hero area -->
+
+    <!-- Course Carousel -->
+    <div ng-show="userCourses.length > 0 && userCourses != null" class="course-carousel-section">
+        <div class="carousel-title">Let's start learning, {{user.firstName}}</div>
+        <div class="wrapper">
+            <owl-carousel class="course-carousel-inner owl-carousel owl-theme owl-loaded responsiveClass-768">
+                <course-item ng-repeat="item in userCourses">
+                </course-item>
+            </owl-carousel>
+        </div>
+    </div>
+    </div>
+    <!-- Course  Carousel End -->
+
+    <!-- course section -->
+    <main class="course-section mt-5">
+        <div class="container">
+
+
+            <div class="row">
+                <h4>Top categories</h4>
+                <section class="mx-auto">
+                    <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+                        <a href="#!/category/{{item.id}}" class="category-wrapper col mt-4" ng-repeat="item in categories | limitTo: 8">
+                            <img src="../resources/images/categories/{{item.image}}" alt="">
+                            <p class="category-title">{{item.name}}</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Course List -->
+        <div class="row">
+
+            <section class="my-5">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                        <div class="section-title">
+                            <h3>
+                                Recommended for <span class="orange-text">You</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="pagination-wrap">
+                            <ul>
+                                <li><a>First</a></li>
+                                <li><a class="active" href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a>Last</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination Ends -->
+
+            </section>
+
+
+
+        </div>
+        <!-- Course List Ends -->
+
+        </div>
+    </main>
+    <!-- end course section -->
+</body>

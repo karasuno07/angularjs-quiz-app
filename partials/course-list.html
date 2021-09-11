@@ -1,0 +1,28 @@
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="breadcrumb-text">
+                <p>Course List</p>
+                <h1>{{courses[0].category.name}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end breadcrumb section -->
+<div ng-init="page = 4" class="container course-list">
+    <div class="row">
+        <div class="col-6 col-sm-4 col-lg-3" ng-repeat="item in courses | limitTo : page">
+            <div class="course shadow-sm">
+                <img src="/resources/images/subjects/{{item.image}}" alt="">
+                <p>{{item.title}}</p>
+                <a href="#!/course/{{item.id}}">SEE DETAILS</a>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <button ng-click="more()" class="btn btn-more">More</button>
+    </div>
+</div>
+

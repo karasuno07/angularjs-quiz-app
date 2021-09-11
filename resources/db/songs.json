@@ -1,0 +1,32 @@
+[
+    {
+        "name": "潮汐 (Thuỷ Triều)",
+        "singer": "傅梦彤 (Phó Mộng Đồng)",
+        "url": "/resources/music/BGM_01.mp3",
+        "thumbnail": "/resources/music/thumbnail/潮汐.jpg"
+    },
+    {
+        "name": "白月光与朱砂痣 (Bạch Nguyệt Quang Và Nốt Chu Sa)",
+        "singer": "大籽 (Đại Tử)",
+        "url": "/resources/music/BGM_02.mp3",
+        "thumbnail": "/resources/music/thumbnail/白月光与朱砂痣.jpg"
+    },
+    {
+        "name": "Người theo đuổi ánh sáng",
+        "singer": "Từ Vi",
+        "url": "/resources/music/BGM_03.mp3",
+        "thumbnail": "/resources/music/thumbnail/nguoi-theo-duoi-anh-sang.jpg"
+    },
+    {
+        "name": "Probably",
+        "singer": "YOASOBI",
+        "url": "/resources/music/YOASOBIたふん.mp3",
+        "thumbnail": "/resources/music/thumbnail/Probably.jpg"
+    },
+    {
+        "name": "Tracing That Dream",
+        "singer": "YOASOBI",
+        "url": "/resources/music/YOASOBIあの夢をなぞって.mp3",
+        "thumbnail": "/resources/music/thumbnail/YOASOBI-Tracing-That-Dream.jpg"
+    }
+]

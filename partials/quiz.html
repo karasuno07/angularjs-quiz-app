@@ -1,0 +1,133 @@
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="breadcrumb-text">
+                <p>{{info.category.name}}</p>
+                <h1>{{info.title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- main content  -->
+<div ng-init="showQuestion = false; idx = 1; play = true" ng-show="play == true" class="quiz-content-section">
+    <div class="container-fluid">
+
+        <div class="info shadow-lg">
+            <div>
+                <div class="question-number">
+                    <h5>{{showQuestion == true ? 'Question #' + idx : 'Click to start'}}</h5>
+                </div>
+                <div ng-show="showQuestion == true" class="question-info">
+                    <p><span class="fw-bold">Tag:</span> {{currentQuestion.tagName}}</p>
+                    <p class="fw-bold"><span>Difficulty:</span> <span ng-style="difficultStyle(currentQuestion.difficultyLevel)">{{currentQuestion.difficultyLevel}}</span></p>
+                </div>
+            </div>
+            <div class="countdown-timer">
+                <div ng-click="start()" class="start-btn">
+                    <img src="../resources/images/icon/start-button.png" width="70" height="70" alt="">
+                </div>
+                <div class="time-left">
+                    <span class="minutes">{{m}}</span>
+                    <span class="divider">:</span>
+                    <span class="seconds">{{s}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quest shadow-lg">
+            <div ng-show="showQuestion == false" class="bg-placeholder">
+                <img src="/resources/images/icon/logo.png" alt="">
+            </div>
+            <div ng-show="showQuestion == true" ng-repeat="q in questions | limitTo: 1 : idx - 1">
+                <div class="quest-wrapper">
+                    <div>
+                        {{q.question}}
+                    </div>
+                </div>
+                <div class="answer-wrapper">
+                    <ul>
+                        <li class="form-check" ng-repeat="(key, value) in q.answers" ng-show="value != null">
+                            <input ng-click="select(idx - 1, key)" id="{{key}}" name="answer" type="radio"
+                                class="form-check-input me-1" ng-checked="q.userAnswer == key">
+                            <label for="{{key}}">
+                                {{value}}
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="func shadow-lg">
+            <button ng-click="confirm()" ng-show="showQuestion == true" class="finish">
+                <h5>Finish</h5>
+            </button>
+            <div class="jump-btn">
+                <button ng-disabled="idx == 1" ng-show="showQuestion == true" ng-click="previous()"
+                    class="btn btn-previous"><i class="fas fa-arrow-circle-left"></i></button>
+                <button ng-disabled="idx == 10" ng-show="showQuestion == true" ng-click="next()" class="btn btn-next"><i
+                        class="fas fa-arrow-circle-right"></i></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div ng-show="play == false" ng-init="more = false" class="quiz-result-section">
+
+    <div class="card shadow text-center p-4">
+        <h4>You have been completed this quiz</h4>
+        <h5 ng-style="resultPointStyle()">Your result is {{point}}/10</h5>
+        <div class="btn-row">
+            <button ng-click="details()" class="col btn btn-see-more">
+                <i class="fas fa-info-circle"></i></i>
+                {{more == false ? 'See' : 'Hide'}} details
+            </button>
+            <button ng-click="restart()" class="col btn btn-try-again">
+                <i class="fas fa-redo-alt"></i>
+                Try again
+            </button>
+        </div>
+        <div ng-show="more == true" class="table-wrapper table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th class="no-sort">#</th>
+                        <th class="no-sort">Question</th>
+                        <th class="no-sort">Your answer</th>
+                        <th class="no-sort">Correct answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in questions">
+                        <td class="no-sort">{{$index + 1}}</td>
+                        <td class="no-sort">{{item.question}}</td>
+                        <td class="no-sort">{{item.userAnswer | uppercase}}</td>
+                        <td class="no-sort">{{item.correctAnswer | uppercase}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- end main content  -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure want to finish?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Close</button>
+                <button ng-click="finish()" type="button" class="btn btn-ok">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

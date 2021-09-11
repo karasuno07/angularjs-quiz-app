@@ -1,0 +1,59 @@
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="breadcrumb-text">
+                <p>{{info.category.name}}</p>
+                <h1>{{info.title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- main-content-section -->
+<div class="container-fluid single-course">
+    <div class="row g-0">
+        <div class="col-md-6 col-lg-4 thumb">
+            <img src="/resources/images/subjects/{{info.image}}" alt="">
+        </div>
+        <div class="col-md-6 col-lg-8 info">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#!/home">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#!/category/{{info.category.id}}">{{info.category.name}}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{info.title}}</li>
+                </ol>
+              </nav>
+            <h2>{{info.title}}</h2>
+            <p class="description">{{info.description}}</p>
+            <div class="controls">
+                <button ng-style="enrollStyle()" ng-click="showConfirm()" class="btn btn-enroll">
+                    <i class="fas fa-bookmark"></i> {{enrolled == false ? 'Enroll' : 'Enrolled'}}
+                </button>
+                <a ng-show="enrolled == true" class="btn btn-learn" href="#!/course/{{info.id}}/learn"><i class="fas fa-graduation-cap"></i> Learn</a>
+                <a ng-show="enrolled == true" class="btn btn-quiz" href="#!/course/{{info.id}}/quiz"><i class="fas fa-gamepad"></i> Do Quiz</a>
+            </div>
+            <span class="last-update"><i class="fas fa-calendar-alt me-2"></i>Last Update: {{info.lastUpdate | date: 'MM-dd-yyyy'}}</span>
+            <span class="language"><i class="fas fa-globe-americas me-2"></i>English</span>
+        </div>
+    </div>
+</div>
+
+<!-- confirm modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span>Are you sure want to {{enrolled == false ? 'enroll' : 'remove'}} this course?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Close</button>
+                <button ng-click="enroll()" type="button" class="btn btn-ok">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

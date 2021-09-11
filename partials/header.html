@@ -1,0 +1,129 @@
+<!-- Header -->
+
+<body ng-controller="userCtrl">
+    <sticky-header class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <!-- menu start -->
+                        <nav mean-menu class="main-menu">
+
+                            <!-- logo -->
+                            <div class="site-logo">
+                                <a href="#!"><img src="resources/images/icon/logo.png" alt=""></a>
+                            </div>
+                            <div class="site-logo logo-mini">
+                                <a href="#!"><img src="resources/images/icon/favicon.png" alt=""></a>
+                            </div>
+                            <!-- logo -->
+
+                            <ul>
+                                <li class="category-items"><a href="javascript:void(0);">Top categories</a>
+                                    <ul class="sub-menu">
+                                        <li ng-repeat="item in categories"><a
+                                                href="#!/category/{{item.id}}">{{item.name}}</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="current-list-item"><a href="#!/home">Home</a></li>
+                                <li><a href="">About Us</a></li>
+                                <li><a href="#!/contact">Contact</a></li>
+                                <li><a href=" ">FAQ</a></li>
+
+                                <li>
+                                    <div class="header-icons">
+                                        <span class="dropdown" id="UserDropdown" aria-expanded="false">
+                                            <a class="login" ng-attr-href="{{(user == null) ? '#!/login' : undefined}}">
+                                                <i class="fas fa-user"
+                                                    ng-class="{true: 'active', false: ''}[user != null]"
+                                                    aria-hidden="true"></i>
+                                                <div ng-if="user != null" class="dropdown-menu dropdown-user"
+                                                    aria-labelledby="UserDropdown">
+                                                    <div class="dropdown-header">
+                                                        <div class="user-img">
+                                                            <img class="img-md rounded-circle"
+                                                                ng-src="{{user.image != null ? '/resources/images/faces/' + user.image : '/resources/images/faces/no-user.png'}}"
+                                                                alt="Profile image">
+                                                        </div>
+                                                        <div class="user-info">
+                                                            <p class="mb-1 fw-bolder">
+                                                                <span>{{user.username}}</span>
+                                                            </p>
+                                                            <p class="fw-light text-lowercase mb-0">
+                                                                <span>{{user.email}}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="dropdown-item">
+                                                        <i class="fas fa-list fs-3 align-middle"></i>
+                                                        <span class="align-middle ms-1">My Courses</span>
+                                                    </a>
+                                                    <a class="dropdown-item">
+                                                        <i class="fas fa-info fs-3 align-middle"></i>
+                                                        <span class="align-middle ms-1">My Profile</span>
+                                                    </a>
+                                                    <a class="dropdown-item logout" ng-click="logout()">
+                                                        <i class="fas fa-sign-out-alt fs-3 align-middle"></i>
+                                                        <span class="align-middle ms-1">Sign Out</span>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </span>
+                                        <a class="mobile-hide search-bar-icon" href="#">
+                                            <i class="fas fa-search" aria-hidden="true "></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </nav>
+
+                        <div class="most-popular">
+                            <ul class="menu">
+                                <li ng-repeat="item in categories | limitTo: 8"><a href="#!/category/{{item.id}}">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <a class="mobile-show search-bar-icon " href="# "><i class="fas fa-search "></i></a>
+                        <div class="mobile-menu "></div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sticky-header>
+    <!-- search area -->
+    <div search-area class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span ng-click="reset()" class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <div>
+                                <h3>Search For</h3>
+                            </div>
+                            <div class="search-input">
+                                <input ng-change="search()" ng-model="searchInput"
+                                    ng-model-options="{debounce: {'default': 500, 'blur': 0}}" class="col" type="text "
+                                    placeholder="Keywords">
+                            </div>
+                        </div>
+                        <div ng-show="result.length > 0" class="result-suggestions">
+                            <div ng-repeat="item in result | limitTo: 8">
+                                <a [class]="btn" href="#!/course/{{item.id}}" class="result">
+                                    <h4>{{item.title}}</h4>
+                                    <p>{{item.category.name}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search area -->
+</body>
+<!-- Header Ends -->

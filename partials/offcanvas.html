@@ -1,0 +1,77 @@
+<!-- Offcanvas Toggle Button -->
+<a id="toggle-offcanvas" class="fixedButton" data-bs-toggle="offcanvas" data-bs-target="#sidebar-offcanvas"
+    aria-controls="sidebar-offcanvas">
+    <div class="roundedFixedBtn">
+        BGM
+    </div>
+</a>
+<!-- Offcanvas Toggle Button Ends -->
+
+
+<!-- Offcanvas Menu -->
+<aside id="sidebar-offcanvas" class="offcanvas offcanvas-end" tabindex="-1">
+        <div class="music-player" music-player>
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <!-- Volume Bar -->
+                <div class="btn btn-volume">
+                    <i class="fas fa-volume-up"></i>
+                    <i class="fas fa-volume-down"></i>
+                    <i class="fas fa-volume-off"></i>
+                    <i class="fas fa-volume-mute"></i>
+                    <input class="volume" type="range">
+                    <div class="bar-hoverbox">
+                        <div class="bar">
+                          <div class="bar-fill"></div>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- Header -->
+                <header>
+                    <h4>Now playing:</h4>
+                    <h2>Song Name</h2>
+                </header>
+
+                <!-- Resize dashboard -->
+                <div class="btn btn-resize">
+                    <i class="fas fa-2x fa-angle-down icon-expand"></i>
+                    <i class="fas fa-2x fa-angle-up icon-shrink"></i>
+                </div>
+
+                <!-- CD -->
+                <div class="cd">
+                    <div class="cd-thumb">
+                    </div>
+                </div>
+
+                <!-- Control -->
+                <div class="control">
+                    <div class="btn btn-repeat">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <div class="btn btn-prev">
+                        <i class="fas fa-step-backward"></i>
+                    </div>
+                    <div class="btn btn-toggle-play">
+                        <i class="fas fa-pause icon-pause"></i>
+                        <i class="fas fa-play icon-play"></i>
+                    </div>
+                    <div class="btn btn-next">
+                        <i class="fas fa-step-forward"></i>
+                    </div>
+                    <div class="btn btn-random">
+                        <i class="fas fa-random"></i>
+                    </div>
+                </div>
+
+                <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+                <audio id="audio" src=""></audio>
+            </div>
+
+            <!-- Playlist -->
+            <div class="playlist">
+            </div>
+        </div>
+</aside>

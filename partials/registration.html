@@ -1,0 +1,135 @@
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<link rel="stylesheet" href="dist/css/registration.css">
+
+<div id="wrapper">
+    <div class="card mx-auto shadow">
+        <article class="card-body">
+            <h4 class="card-title mt-3 text-center">Registration</h4>
+            <p class="text-center">Get started with a free account</p>
+
+            <div class="d-grid gap-2">
+                <button href="" class="btn btn-google">
+                    <i class="fab fa-google"></i>   Sign Up via Google
+                </button>
+                <button href="" class="btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i>   Sign Up via Facebook
+                </button>
+            </div>
+            <p class="divider-text">
+                <span>OR</span>
+            </p>
+            <form name="registForm" method="POST">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"> <i class="fa fa-user"></i>
+                        </span>
+                        <input ng-model="user.username" name="username" class="form-control" placeholder="Username"
+                            required ng-minlength="6" ng-maxlength="20"
+                            unique-username />
+                    </div>
+                    <span ng-show="registForm.username.$error.uniqueUsername && registForm.username.$touched"
+                        class="error">
+                        This username already exists
+                    </span>
+                    <span ng-show="registForm.username.$error.required && registForm.username.$touched" class="error">
+                        Username is required
+                    </span>
+                    <span ng-show="registForm.username.$error.minlength && registForm.username.$touched" class="error">
+                        Username must be at least 6 characters long
+                    </span>
+                    <span ng-show="registForm.username.$error.maxlength && registForm.username.$touched" class="error">
+                        Username must be at most 20 characters long
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text"> <i class="fa fa-align-justify"></i>
+                            </span>
+                            <input ng-model="user.firstName" name="firstName" class="form-control"
+                                placeholder="First name" required />
+                        </div>
+                        <span ng-show="registForm.firstName.$invalid && registForm.firstName.$touched"
+                            class="error">First name is required</span>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text"> <i class="fa fa-align-justify"></i>
+                            </span>
+                            <input ng-model="user.lastName" name="lastName" class="form-control" placeholder="Last name"
+                                required />
+                        </div>
+                        <span ng-show="registForm.lastName.$invalid && registForm.lastName.$touched" class="error">Last
+                            name is required</span>
+                    </div>
+                </div>
+                <!-- mb-3// -->
+                <div class="mb-3">
+                    <div class=" input-group">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i>
+                        </span>
+                        <input ng-model="user.email" name="email" type="email" class="form-control"
+                            placeholder="Email address" />
+                    </div>
+                    <span ng-show="registForm.email.$error.email" class="error">Invalid email address</span>
+                </div>
+                <!-- mb-3// -->
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i>
+                        </span>
+                        <select class="form-select" style="max-width: 100px;" name="phoneCode">
+                            <option selected="true" value="84">+84</option>
+                            <option value="1">+1</option>
+                            <option value="86">+86</option>
+                            <option value="82">+82</option>
+                            <option value="81">+81</option>
+                            <option value="33">+33</option>
+                            <option value="49">+49</option>
+                            <option value="44">+44</option>
+                        </select>
+                        <input ng-model="user.phoneNumber" name="phoneNumber" type="text" class="form-control"
+                            ng-pattern="phoneRegex" placeholder="Phone number" />
+                    </div>
+                    <span ng-show="registForm.phoneNumber.$error.pattern" class="error">Invalid phone number</span>
+                </div>
+                <!-- mb-3// -->
+                <div class="mb-3">
+                    <div class=" input-group">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i>
+                        </span>
+                        <input ng-model="user.password" type="password" name="password" ng-minlength="6" required
+                            class="form-control" placeholder="Password" />
+                    </div>
+                    <span ng-show="registForm.password.$error.required && registForm.password.$touched" class="error">
+                        Password is required
+                    </span>
+                    <span ng-show="registForm.password.$error.minlength && registForm.password.$touched" class="error">
+                        Password must be at least 6 characters long
+                    </span>
+                </div>
+                <!-- mb-3// -->
+                <div class="mb-3">
+                    <div class=" input-group">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i>
+                        </span>
+                        <input ng-model="matchingPassword" type="password" name="matchingPassword" class="form-control"
+                            compare-to="user.password" placeholder="Re-type password" />
+                    </div>
+                    <span ng-show="registForm.matchingPassword.$invalid && registForm.matchingPassword.$touched"
+                        class="error">Passwords doesn't match</span>
+                </div>
+                <!-- mb-3// -->
+                <div class="mb-3 d-grid">
+                    <button ng-disabled="registForm.$invalid" ng-click="submit()" id="btn-submit" type="submit"
+                        class="btn btn-submit">Create Account</button>
+                </div>
+                <!-- mb-3// -->
+                <p class="text-center">
+                    Already have an account?
+                    <a class="link-login" href="#!/login">Sign In</a>
+                </p>
+            </form>
+        </article>
+    </div>
+</div>
